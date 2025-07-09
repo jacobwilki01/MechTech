@@ -1,0 +1,13 @@
+{
+  "itemGroup.mechtech": "Example Mod Tab",
+  "block.mechtech.example_block": "Example Block",
+  "item.mechtech.example_item": "Example Item",
+
+  "mechtech.configuration.title": "MechTech Configs",
+  "mechtech.configuration.section.mechtech.common.toml": "MechTech Configs",
+  "mechtech.configuration.section.mechtech.common.toml.title": "MechTech Configs",
+  "mechtech.configuration.items": "Item List",
+  "mechtech.configuration.logDirtBlock": "Log Dirt Block",
+  "mechtech.configuration.magicNumberIntroduction": "Magic Number Text",
+  "mechtech.configuration.magicNumber": "Magic Number"
+}
