@@ -9,6 +9,6 @@
     }
   },
   "textures": {
-    "layer0": "mechtech:item/rod"
+    "layer0": "mechtech:item/rod_metallic"
   }
 }

@@ -9,6 +9,6 @@
     }
   },
   "textures": {
-    "layer0": "mechtech:item/ingot"
+    "layer0": "mechtech:item/ingot_metallic"
   }
 }

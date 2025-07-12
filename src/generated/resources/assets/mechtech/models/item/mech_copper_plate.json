@@ -9,6 +9,6 @@
     }
   },
   "textures": {
-    "layer0": "mechtech:item/plate"
+    "layer0": "mechtech:item/plate_shiny"
   }
 }

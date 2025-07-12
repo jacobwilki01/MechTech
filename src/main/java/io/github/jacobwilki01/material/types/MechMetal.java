@@ -6,6 +6,7 @@ import io.github.jacobwilki01.material.MaterialRegistry;
 import io.github.jacobwilki01.material.MechMaterial;
 import io.github.jacobwilki01.material.form.MechMaterialBlock;
 import io.github.jacobwilki01.material.form.MechMaterialItem;
+import io.github.jacobwilki01.material.types.components.MechMaterialCharacteristic;
 import io.github.jacobwilki01.material.types.components.MechMetalComponent;
 import io.github.jacobwilki01.material.types.makeup.IMechMaterialMakeup;
 import lombok.Getter;
@@ -146,17 +147,23 @@ public class MechMetal extends MechMaterial {
         super.registerItemModel(itemModelProvider, mcModelLocation);
 
         itemModelProvider.apply(ingot.getId().toString(), mcModelLocation.apply("item/generated"), getColor())
-                .texture("layer0", "item/ingot");
+                .texture("layer0", "item/ingot_" + getCharacteristic().getJsonName());
         itemModelProvider.apply(nugget.getId().toString(), mcModelLocation.apply("item/generated"), getColor())
-                .texture("layer0", "item/nugget");
+                .texture("layer0", "item/nugget_" + getCharacteristic().getJsonName());
         itemModelProvider.apply(plate.getId().toString(), mcModelLocation.apply("item/generated"), getColor())
-                .texture("layer0", "item/plate");
+                .texture("layer0", "item/plate_" + getCharacteristic().getJsonName());
 
         if (gear.isPresent())
             itemModelProvider.apply(gear.get().getId().toString(), mcModelLocation.apply("item/generated"), getColor())
-                .texture("layer0", "item/gear");
+                .texture("layer0", "item/gear_" + getCharacteristic().getJsonName());
         if (rod.isPresent())
             itemModelProvider.apply(rod.get().getId().toString(), mcModelLocation.apply("item/generated"), getColor())
-                .texture("layer0", "item/rod");
+                .texture("layer0", "item/rod_" + getCharacteristic().getJsonName());
+    }
+
+    @Override
+    public <T extends MechMaterial> T setCharacteristic(MechMaterialCharacteristic characteristic) {
+        super.setCharacteristicAttribute(characteristic);
+        return (T) this;
     }
 }

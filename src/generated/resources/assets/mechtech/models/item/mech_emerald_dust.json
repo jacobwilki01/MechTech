@@ -9,6 +9,6 @@
     }
   },
   "textures": {
-    "layer0": "mechtech:item/dust"
+    "layer0": "mechtech:item/dust_shiny"
   }
 }

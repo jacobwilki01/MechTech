@@ -5,16 +5,20 @@ import io.github.jacobwilki01.datagen.item_color.ItemColorBuilder;
 import io.github.jacobwilki01.material.MaterialRegistry;
 import io.github.jacobwilki01.material.MechMaterial;
 import io.github.jacobwilki01.material.form.MechMaterialItem;
+import io.github.jacobwilki01.material.types.components.MechMaterialCharacteristic;
 import io.github.jacobwilki01.material.types.components.MechMetalComponent;
 import lombok.Getter;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import org.apache.commons.lang3.function.TriFunction;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
@@ -142,17 +146,30 @@ public class MechMinecraftMetal extends MechMaterial {
         super.registerItemModel(itemModelProvider, mcModelLocation);
 
         itemModelProvider.apply(plate.getId().toString(), mcModelLocation.apply("item/generated"), getColor())
-                .texture("layer0", "item/plate");
+                .texture("layer0", "item/plate_" + getCharacteristic().getJsonName());
 
         if (modNugget != null)
             itemModelProvider.apply(modNugget.getId().toString(), mcModelLocation.apply("item/generated"), getColor())
-                    .texture("layer0", "item/nugget");
+                    .texture("layer0", "item/nugget_" + getCharacteristic().getJsonName());
 
         if (gear.isPresent())
             itemModelProvider.apply(gear.get().getId().toString(), mcModelLocation.apply("item/generated"), getColor())
-                    .texture("layer0", "item/gear");
+                    .texture("layer0", "item/gear_" + getCharacteristic().getJsonName());
         if (rod.isPresent())
             itemModelProvider.apply(rod.get().getId().toString(), mcModelLocation.apply("item/generated"), getColor())
-                    .texture("layer0", "item/rod");
+                    .texture("layer0", "item/rod_" + getCharacteristic().getJsonName());
+    }
+
+    public void registerVanillaTooltips(ItemTooltipEvent event) {
+        Item eventItem = event.getItemStack().getItem();
+
+        if (eventItem == ingot || eventItem == nugget)
+            event.getToolTip().add(Component.literal(getAbbreviation()).withColor(0x8b8b8b));
+    }
+
+    @Override
+    public <T extends MechMaterial> T setCharacteristic(MechMaterialCharacteristic characteristic) {
+        super.setCharacteristicAttribute(characteristic);
+        return (T) this;
     }
 }

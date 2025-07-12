@@ -3,6 +3,7 @@ package io.github.jacobwilki01;
 import io.github.jacobwilki01.creative_tab.CreativeTabRegistry;
 import io.github.jacobwilki01.material.MaterialRegistry;
 import net.minecraft.world.item.CreativeModeTab;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -31,5 +32,16 @@ public class MechTech {
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
+    }
+
+    @SubscribeEvent
+    public void addVanillaTooltips(ItemTooltipEvent event) {
+        MaterialRegistry.IRON.registerVanillaTooltips(event);
+        MaterialRegistry.GOLD.registerVanillaTooltips(event);
+        MaterialRegistry.COPPER.registerVanillaTooltips(event);
+        MaterialRegistry.NETHERITE.registerVanillaTooltips(event);
+        MaterialRegistry.DIAMOND.registerVanillaTooltips(event);
+        MaterialRegistry.AMETHYST.registerVanillaTooltips(event);
+        MaterialRegistry.EMERALD.registerVanillaTooltips(event);
     }
 }

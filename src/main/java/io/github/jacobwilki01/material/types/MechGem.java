@@ -6,6 +6,7 @@ import io.github.jacobwilki01.material.MaterialRegistry;
 import io.github.jacobwilki01.material.MechMaterial;
 import io.github.jacobwilki01.material.form.MechMaterialBlock;
 import io.github.jacobwilki01.material.form.MechMaterialItem;
+import io.github.jacobwilki01.material.types.components.MechMaterialCharacteristic;
 import io.github.jacobwilki01.material.types.makeup.IMechMaterialMakeup;
 import lombok.Getter;
 import net.minecraft.resources.ResourceLocation;
@@ -85,8 +86,14 @@ public class MechGem extends MechMaterial {
         super.registerItemModel(itemModelProvider, mcModelLocation);
 
         itemModelProvider.apply(gem.getId().toString(), mcModelLocation.apply("item/generated"), getColor())
-                .texture("layer0", "item/gem");
+                .texture("layer0", "item/gem_" + getCharacteristic().getJsonName());
         itemModelProvider.apply(nugget.getId().toString(), mcModelLocation.apply("item/generated"), getColor())
-                .texture("layer0", "item/nugget");
+                .texture("layer0", "item/nugget_" + getCharacteristic().getJsonName());
+    }
+
+    @Override
+    public <T extends MechMaterial> T setCharacteristic(MechMaterialCharacteristic characteristic) {
+        super.setCharacteristicAttribute(characteristic);
+        return (T) this;
     }
 }

@@ -9,6 +9,6 @@
     }
   },
   "textures": {
-    "layer0": "mechtech:item/gear"
+    "layer0": "mechtech:item/gear_metallic"
   }
 }

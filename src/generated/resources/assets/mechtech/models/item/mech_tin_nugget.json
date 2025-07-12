@@ -9,6 +9,6 @@
     }
   },
   "textures": {
-    "layer0": "mechtech:item/nugget"
+    "layer0": "mechtech:item/nugget_metallic"
   }
 }

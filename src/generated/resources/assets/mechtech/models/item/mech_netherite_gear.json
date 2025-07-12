@@ -4,11 +4,11 @@
   "neoforge_data": {
     "layers": {
       "0": {
-        "color": 4283255117
+        "color": 4284110682
       }
     }
   },
   "textures": {
-    "layer0": "mechtech:item/gear"
+    "layer0": "mechtech:item/gear_metallic"
   }
 }

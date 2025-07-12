@@ -4,8 +4,10 @@ import io.github.jacobwilki01.MechTech;
 import io.github.jacobwilki01.datagen.MechTechLangProvider;
 import io.github.jacobwilki01.datagen.item_color.ItemColorBuilder;
 import io.github.jacobwilki01.material.form.MechMaterialItem;
+import io.github.jacobwilki01.material.types.components.MechMaterialCharacteristic;
 import io.github.jacobwilki01.material.types.makeup.IMechMaterialMakeup;
 import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -55,6 +57,12 @@ public abstract class MechMaterial {
     @Getter
     private IMechMaterialMakeup makeup;
 
+    /**
+     * The material's characteristic
+     */
+    @Getter
+    private MechMaterialCharacteristic characteristic;
+
     protected MechMaterial(String materialName, String abbreviation, long color, IMechMaterialMakeup makeup) {
         this.name = materialName;
         this.color = color;
@@ -97,6 +105,15 @@ public abstract class MechMaterial {
     public void registerItemModel(TriFunction<String, ResourceLocation, Long, ItemColorBuilder> itemModelProvider,
                                   Function<String, ResourceLocation> mcModelLocation) {
         itemModelProvider.apply(dust.getId().toString(), mcModelLocation.apply("item/generated"), color)
-                .texture("layer0", "item/dust");
+                .texture("layer0", "item/dust_" + getCharacteristic().getJsonName());
+    }
+
+    /**
+     * Sets the characteristic attribute, returns and instance.
+     */
+    public abstract <T extends MechMaterial> T setCharacteristic(MechMaterialCharacteristic characteristic);
+
+    protected void setCharacteristicAttribute(MechMaterialCharacteristic characteristic) {
+        this.characteristic = characteristic;
     }
 }
