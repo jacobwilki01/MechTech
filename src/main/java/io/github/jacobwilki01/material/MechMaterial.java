@@ -37,7 +37,8 @@ public class MechMaterial {
      * The material's abbreviation.
      */
     @Getter
-    private final String abbreviation;
+    @Setter
+    private String abbreviation;
 
     /**
      * The color of the material.
@@ -49,7 +50,8 @@ public class MechMaterial {
     /**
      * The material's chemical makeup.
      */
-    private final IMechMaterialMakeup makeup;
+    @Setter
+    private IMechMaterialMakeup makeup;
 
     /**
      * The material's characteristic
@@ -89,15 +91,9 @@ public class MechMaterial {
     @Setter
     private Optional<Block> vanillaBlock;
 
-    protected MechMaterial(String materialName, String abbreviation, IMechMaterialMakeup makeup) {
+    protected MechMaterial(String materialName, String abbreviation) {
         this.name = materialName;
-
-        if (makeup != null)
-            this.abbreviation = makeup.getTooltip();
-        else
-            this.abbreviation = abbreviation;
-
-        this.makeup = makeup;
+        this.abbreviation = abbreviation;
 
       MechTech.LOGGER.info("Registered MechMaterial {}", materialName);
     }

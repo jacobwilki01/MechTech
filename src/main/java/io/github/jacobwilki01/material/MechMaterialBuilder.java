@@ -5,6 +5,8 @@ import io.github.jacobwilki01.material.component.MechMaterialItemComponent;
 import io.github.jacobwilki01.material.form.MechMaterialBlock;
 import io.github.jacobwilki01.material.form.MechMaterialItem;
 import io.github.jacobwilki01.material.makeup.IMechMaterialMakeup;
+import io.github.jacobwilki01.material.makeup.MechMaterialMakeup;
+import io.github.jacobwilki01.material.makeup.MechMaterialMakeup.MechMaterialMakeupProperty;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -44,8 +46,8 @@ public class MechMaterialBuilder {
     /**
      * Builds a basic material of the selected type.
      */
-    public MechMaterialBuilder init(String name, String abbreviation, IMechMaterialMakeup makeup) {
-        material = new MechMaterial(name, abbreviation, makeup);
+    public MechMaterialBuilder init(String name, String abbreviation) {
+        material = new MechMaterial(name, abbreviation);
         MaterialRegistry.MATERIALS.add(material);
 
         return this;
@@ -114,6 +116,18 @@ public class MechMaterialBuilder {
      */
     public MechMaterialBuilder registerVanillaBlock(Block block) {
         material.setVanillaBlock(Optional.of(block));
+
+        return this;
+    }
+
+    /**
+     * Registers the chemical makeup of the material.
+     */
+    public MechMaterialBuilder registerChemicalMakeup(MechMaterialMakeupProperty... properties) {
+        IMechMaterialMakeup makeup = new MechMaterialMakeup(properties);
+
+        material.setMakeup(makeup);
+        material.setAbbreviation(makeup.getTooltip());
 
         return this;
     }
