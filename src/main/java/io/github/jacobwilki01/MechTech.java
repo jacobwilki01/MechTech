@@ -36,12 +36,6 @@ public class MechTech {
 
     @SubscribeEvent
     public void addVanillaTooltips(ItemTooltipEvent event) {
-        MaterialRegistry.IRON.registerVanillaTooltips(event);
-        MaterialRegistry.GOLD.registerVanillaTooltips(event);
-        MaterialRegistry.COPPER.registerVanillaTooltips(event);
-        MaterialRegistry.NETHERITE.registerVanillaTooltips(event);
-        MaterialRegistry.DIAMOND.registerVanillaTooltips(event);
-        MaterialRegistry.AMETHYST.registerVanillaTooltips(event);
-        MaterialRegistry.EMERALD.registerVanillaTooltips(event);
+
     }
 }

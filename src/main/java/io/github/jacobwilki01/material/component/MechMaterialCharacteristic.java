@@ -1,4 +1,4 @@
-package io.github.jacobwilki01.material.types.components;
+package io.github.jacobwilki01.material.component;
 
 import lombok.Getter;
 
