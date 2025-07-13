@@ -114,7 +114,7 @@ public class MaterialRegistry {
         // Register Gems
         // TODO use material makeup on these gems.
         AMETHYST = new MechMaterialBuilder()
-                .init("amethyst", "SiO\u2082", null)
+                .init("amethyst", "SiO₂", null)
                 .registerColor(0xffcca4f4L)
                 .registerCharacteristic(MechMaterialCharacteristic.SHINY)
                 .registerVanillaBlock(Blocks.AMETHYST_BLOCK)

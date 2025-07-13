@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "loader": "neoforge:item_layers",
+  "neoforge_data": {
+    "layers": {
+      "0": {
+        "color": 4294440951
+      }
+    }
+  },
+  "textures": {
+    "layer0": "mechtech:item/dust_metallic"
+  }
+}
