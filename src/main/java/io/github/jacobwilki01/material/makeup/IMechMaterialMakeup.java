@@ -1,4 +1,4 @@
-package io.github.jacobwilki01.material.types.makeup;
+package io.github.jacobwilki01.material.makeup;
 
 public interface IMechMaterialMakeup {
     /**

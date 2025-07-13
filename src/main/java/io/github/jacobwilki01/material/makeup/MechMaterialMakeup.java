@@ -1,4 +1,4 @@
-package io.github.jacobwilki01.material.types.makeup;
+package io.github.jacobwilki01.material.makeup;
 
 import io.github.jacobwilki01.material.MechMaterial;
 import lombok.Getter;
@@ -53,20 +53,46 @@ public class MechMaterialMakeup implements IMechMaterialMakeup {
         @Getter
         private boolean complex;
 
-        protected MechMaterialMakeupProperty(int count, MechMaterial material) {
+        public MechMaterialMakeupProperty(int count, MechMaterial material) {
             this.count = count;
             this.material = material;
-            this.complex = count > 1 || this.material.getMakeup().isComplex();
+            this.complex = count > 1 && this.material.isComplexMakeup();
         }
 
         /**
          * Returns this property's tooltip.
          */
         public String getTooltip() {
-            if (complex)
-                return "(" + material.getAbbreviation() + ")" + count;
-            else
-                return material.getAbbreviation() + count;
+            return (complex ? "(" : "") +
+                    material.getAbbreviation() +
+                   (complex ? ")" : "") +
+                   (count > 1 ? toSubscript(count) : "");
+        }
+
+        /**
+         * Converts a integer value to a subscript-formatted string.
+         */
+        private String toSubscript(int count) {
+            String countStr = Integer.toString(count);
+            StringBuilder result = new StringBuilder();
+
+            for (int i = 0; i < countStr.length(); i++) {
+                switch (countStr.charAt(i)) {
+                    case '0' -> result.append("₀");
+                    case '1' -> result.append("₁");
+                    case '2' -> result.append("₂");
+                    case '3' -> result.append("₃");
+                    case '4' -> result.append("₄");
+                    case '5' -> result.append("₅");
+                    case '6' -> result.append("₆");
+                    case '7' -> result.append("₇");
+                    case '8' -> result.append("₈");
+                    case '9' -> result.append("₉");
+                    default -> result.append("<UNK>");
+                }
+            }
+
+            return result.toString();
         }
     }
 }
