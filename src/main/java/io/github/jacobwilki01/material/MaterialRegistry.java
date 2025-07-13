@@ -44,22 +44,6 @@ public class MaterialRegistry {
     public static final MechMaterial EMERALD;
     public static final MechMaterial RUBY;
 
-// Minecraft gems.
-//    public static final MechMinecraftGem DIAMOND = new MechMinecraftGem("diamond", "C", 0xff4aedd9L,
-//            Items.DIAMOND, Blocks.DIAMOND_BLOCK).setCharacteristic(MechMaterialCharacteristic.SHINY);
-//    public static final MechMinecraftGem AMETHYST = new MechMinecraftGem("amethyst", "SiO\u2082", 0xffcca4f4L,
-//            Items.AMETHYST_SHARD, Blocks.AMETHYST_BLOCK).setCharacteristic(MechMaterialCharacteristic.SHINY);
-//    public static final MechMinecraftGem EMERALD = new MechMinecraftGem("emerald", "Be\u2083Al\u2082SiO\u2086", 0xff17dd62L,
-//            Items.EMERALD, Blocks.EMERALD_BLOCK).setCharacteristic(MechMaterialCharacteristic.SHINY);
-//
-//    // MechTech metals.
-//    public static final MechMaterial TIN = new MechMetal("tin", "Sn", 0xffebe8d8L,
-//            BlockBehaviour.Properties.of(), null, MechMetalComponent.GEAR, MechMetalComponent.ROD)
-//            .setCharacteristic(MechMaterialCharacteristic.METALLIC);
-//    public static final MechMaterial ALUMINUM = new MechMetal("aluminum", "Al", 0xffe6fffeL,
-//            BlockBehaviour.Properties.of(), null, MechMetalComponent.GEAR, MechMetalComponent.ROD)
-//            .setCharacteristic(MechMaterialCharacteristic.METALLIC);
-
     static {
         // Register basic materials.
         ALUMINUM = new MechMaterialBuilder()
